@@ -12,20 +12,105 @@ constructor()
 super();
 this.state=
 {
-     showMusic:true,
-     showGame:false,  
-      // active_menu:
+     showAlbums:true,
+     showSettings:false,  
+     showPlaylists:false,
+     showGames:false,
+     active_menu:showAlbums
 }
 }
-rotatewheel(e)
+rotatewheel=(e)=>
 {
-// var currentAngle = 0;
-// var index=1;
-// var target = document.getElementsByClassName('rotate-buttons');
-// console.log(e.target);   // what is this target kaha se mil raha hai ye wait calling u ok
-// var region = new ZingTouch.Region(e.target);
-// region.bind(e.target,'rotate', function(e) {
-// currentAngle += e.detail.distanceFromLast;
+var currentAngle = 0;
+var target = document.getElementsByClassName('rotate-buttons');
+var region = new ZingTouch.Region(e.target);
+region.bind(e.target,'rotate', function(e) {
+  currentAngle += e.detail.distanceFromOrigin;
+  if(currentAngle>5 && currentAngle <= 95)
+  {
+    this.setState={
+      showAlbums:false,
+      showSettings:true,  
+      showPlaylists:false,
+      showGames:false,
+      active_menu:showSettings
+    }
+  }
+  if(currentAngle >95 && currentAngle<=184)
+  {
+    this.setState={
+      showAlbums:false,
+      showSettings:false,  
+      showPlaylists:true,
+      showGames:false,
+      active_menu:showPlaylists
+    }
+  }
+  if(currentAngle>184 && currentAngle<=283)
+  {
+    this.setState={
+      showAlbums:false,
+      showSettings:false,  
+      showPlaylists:false,
+      showGames:true,
+      active_menu:showGames
+    }
+  }
+  if(currentAngle>283 && currentAngle<=360)
+  {
+    this.setState={
+      showAlbums:true,
+      showSettings:false,  
+      showPlaylists:false,
+      showGames:false,
+      active_menu:showAlbums
+    }
+  }
+  if(currentAngle<0 && currentAngle>=-115)
+  {
+    this.setState={
+      showAlbums:false,
+      showSettings:false,  
+      showPlaylists:false,
+      showGames:true,
+      active_menu:showGames
+    }
+  }
+  if(currentAngle<-116 && currentAngle>=-219)
+  {
+    this.setState={
+      showAlbums:false,
+      showSettings:false,  
+      showPlaylists:true,
+      showGames:false,
+      active_menu:showPlaylists
+    }
+  }
+  if(currentAngle<-219 && currentAngle>=-298)
+  {
+    this.setState={
+      showAlbums:false,
+      showSettings:true,  
+      showPlaylists:false,
+      showGames:false,
+      active_menu:showSettings
+    }
+  }
+  if(currentAngle<-298 && currentAngle>=-359)
+  {
+    this.setState={
+      showAlbums:true,
+      showSettings:false,  
+      showPlaylists:false,
+      showGames:false,
+      active_menu:showAlbums
+    }
+  }
+
+
+  
+  
+});
 // if(currentAngle > 0 && currentAngle >15)
 // {
 // this.setState={index:this.index+1};
@@ -45,14 +130,9 @@ rotatewheel(e)
 // }
 // }
 // });
-console.log("printing e in rotatewheel",e);
+console.log("printing e in rotatewheel",e.target);
 }
-handleclick=(e)=>
-{
-  this.rotatewheel(e);
-  console.log("printing e in handleclick",e);
-  
-}
+
 render()
 {
 return (
@@ -60,12 +140,12 @@ return (
 {/* div for the whole screen */}
 <div className="screen">
 <div className="show-screen">
-<MainList
-// index={this.state.index} 
+<MainLists active_menu={this.state.active_menu}
 />
+console.log(this.state.active_menu);
 </div>
 {/* div for the buttons section */}
-<div className="rotate-buttons" onClick={this.handleclick}>
+<div className="rotate-buttons" onClick={this.rotatewheel}>
 <div className="menu">
 <img />
 </div>
