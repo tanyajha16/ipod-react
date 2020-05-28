@@ -16,7 +16,6 @@ this.state=
      showSettings:false,  
      showPlaylists:false,
      showGames:false,
-     active_menu:showAlbums
 }
 }
 rotatewheel=(e)=>
@@ -33,7 +32,7 @@ region.bind(e.target,'rotate', function(e) {
       showSettings:true,  
       showPlaylists:false,
       showGames:false,
-      active_menu:showSettings
+     
     }
   }
   if(currentAngle >95 && currentAngle<=184)
@@ -43,7 +42,7 @@ region.bind(e.target,'rotate', function(e) {
       showSettings:false,  
       showPlaylists:true,
       showGames:false,
-      active_menu:showPlaylists
+      
     }
   }
   if(currentAngle>184 && currentAngle<=283)
@@ -53,7 +52,6 @@ region.bind(e.target,'rotate', function(e) {
       showSettings:false,  
       showPlaylists:false,
       showGames:true,
-      active_menu:showGames
     }
   }
   if(currentAngle>283 && currentAngle<=360)
@@ -63,7 +61,7 @@ region.bind(e.target,'rotate', function(e) {
       showSettings:false,  
       showPlaylists:false,
       showGames:false,
-      active_menu:showAlbums
+      
     }
   }
   if(currentAngle<0 && currentAngle>=-115)
@@ -73,7 +71,7 @@ region.bind(e.target,'rotate', function(e) {
       showSettings:false,  
       showPlaylists:false,
       showGames:true,
-      active_menu:showGames
+      
     }
   }
   if(currentAngle<-116 && currentAngle>=-219)
@@ -83,7 +81,7 @@ region.bind(e.target,'rotate', function(e) {
       showSettings:false,  
       showPlaylists:true,
       showGames:false,
-      active_menu:showPlaylists
+      
     }
   }
   if(currentAngle<-219 && currentAngle>=-298)
@@ -93,7 +91,7 @@ region.bind(e.target,'rotate', function(e) {
       showSettings:true,  
       showPlaylists:false,
       showGames:false,
-      active_menu:showSettings
+      
     }
   }
   if(currentAngle<-298 && currentAngle>=-359)
@@ -103,7 +101,7 @@ region.bind(e.target,'rotate', function(e) {
       showSettings:false,  
       showPlaylists:false,
       showGames:false,
-      active_menu:showAlbums
+      
     }
   }
 
@@ -140,9 +138,9 @@ return (
 {/* div for the whole screen */}
 <div className="screen">
 <div className="show-screen">
-<MainLists active_menu={this.state.active_menu}
+<MainList state={this.state}
 />
-console.log(this.state.active_menu);
+console.log(this.state);
 </div>
 {/* div for the buttons section */}
 <div className="rotate-buttons" onClick={this.rotatewheel}>
