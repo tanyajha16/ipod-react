@@ -24,13 +24,32 @@ code {
 .inner-div
 {
   border-radius:50%;
-  width:40%;
+  width:30%;
   height:120px;
   background-color:black;
   box-shadow: 5px 10px 8px #888888;
   position:absolute;
-  left:30%;
-  top:30%;
+  left:35%;
+  top:68%;
+}
+.menu
+{
+  position:absolute;
+  left:43%;
+  top:10%;
+  
+}
+.left
+{
+  position:absolute;
+  top:45%;
+  left:10%;
+}
+.right
+{
+  position:absolute;
+  left:80%;
+  top:45%;
 }
 .screen
 {
@@ -76,4 +95,11 @@ code {
 .active
 {
   background-color:lightblue;
+}
+.albums-single-page img
+{
+  width:75%;
+    height:50%;
+    margin-left: 13%;
+    
 }

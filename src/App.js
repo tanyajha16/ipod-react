@@ -2,6 +2,7 @@
 import React from 'react';
 // using the mainlist page here
 import MainList from'./Mainlist';
+import Albums from './Albums';
 // using zing touch 
 import ZingTouch from 'zingtouch';
 // using css for app
@@ -16,151 +17,146 @@ this.state=
      showSettings:false,  
      showPlaylists:false,
      showGames:false,
+     showLists:true
 }
 }
 rotatewheel=(e)=>
 {
+  const context=this;
 var currentAngle = 0;
 var target = document.getElementsByClassName('rotate-buttons');
 var region = new ZingTouch.Region(e.target);
 region.bind(e.target,'rotate', function(e) {
-  currentAngle += e.detail.distanceFromOrigin;
-  if(currentAngle>5 && currentAngle <= 95)
+  currentAngle += e.detail.distanceFromLast;
+  
+  console.log("context",context);
+  if(currentAngle>5 && currentAngle <=105)
   {
-    this.setState={
-      showAlbums:false,
+    context.setState({showAlbums:false,
       showSettings:true,  
       showPlaylists:false,
-      showGames:false,
+      showGames:false})
+      console.log("context",context);
+      
      
-    }
+    
   }
-  if(currentAngle >95 && currentAngle<=184)
+  else if(currentAngle >105 && currentAngle<=184)
   {
-    this.setState={
+    context.setState({
       showAlbums:false,
       showSettings:false,  
       showPlaylists:true,
       showGames:false,
       
-    }
+    })
   }
-  if(currentAngle>184 && currentAngle<=283)
+  else if(currentAngle>184 && currentAngle<=283)
   {
-    this.setState={
+    context.setState({
       showAlbums:false,
       showSettings:false,  
       showPlaylists:false,
       showGames:true,
-    }
+    })
   }
-  if(currentAngle>283 && currentAngle<=360)
+  else if(currentAngle>283 && currentAngle<=360)
   {
-    this.setState={
+    context.setState({
       showAlbums:true,
       showSettings:false,  
       showPlaylists:false,
       showGames:false,
       
-    }
+    })
   }
-  if(currentAngle<0 && currentAngle>=-115)
+  else if(currentAngle<0 && currentAngle>=-115)
   {
-    this.setState={
+    context.setState({
       showAlbums:false,
       showSettings:false,  
       showPlaylists:false,
       showGames:true,
       
-    }
+    })
   }
-  if(currentAngle<-116 && currentAngle>=-219)
+  else if(currentAngle<-116 && currentAngle>=-219)
   {
-    this.setState={
+    context.setState({
       showAlbums:false,
       showSettings:false,  
       showPlaylists:true,
       showGames:false,
       
-    }
+    })
   }
-  if(currentAngle<-219 && currentAngle>=-298)
+ else if(currentAngle<-219 && currentAngle>=-298)
   {
-    this.setState={
+    context.setState({
       showAlbums:false,
       showSettings:true,  
       showPlaylists:false,
       showGames:false,
       
-    }
+    })
   }
-  if(currentAngle<-298 && currentAngle>=-359)
+  else if(currentAngle<-298 && currentAngle>=-359)
   {
-    this.setState={
+    context.setState({
       showAlbums:true,
       showSettings:false,  
       showPlaylists:false,
       showGames:false,
       
-    }
+    })
   }
-
-
-  
-  
 });
-// if(currentAngle > 0 && currentAngle >15)
-// {
-// this.setState={index:this.index+1};
-// console.log(this.state.index);
-// }
-// else if(currentAngle<0)
-// {
-// if(index===1)
-// {
-// this.setState={index:this.index};
-// console.log(this.state.index);
-// }
-// else
-// {
-// this.setState={index:this.index-1};
-// console.log(this.state.index);
-// }
-// }
-// });
+
 console.log("printing e in rotatewheel",e.target);
 }
-
 render()
 {
+ const {showAlbums,showSettings,showPlaylists,showGames,showLists}=this.state;
+ console.log("state",this.state);
+ 
 return (
 <div className="App">
 {/* div for the whole screen */}
 <div className="screen">
 <div className="show-screen">
-<MainList state={this.state}
-/>
-console.log(this.state);
+{`${showLists ?<MainList state={this.state}/> :<Albums />}`}
+
 </div>
 {/* div for the buttons section */}
 <div className="rotate-buttons" onClick={this.rotatewheel}>
-<div className="menu">
-<img />
+<div className="menu"  >
+{/* <img src="https://toppng.com/uploads/preview/square-svg-icon-free-menu-icon-sv-11563649031azv921gf4z.png" 
+style={{width:40,height:40}} 
+/> */}
 </div>
 <div className="left">
-<img src=""/>
+{/* <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIkcDdC3ylacc_W_K9aXXjJL8qnwT8sswuad0zz5xvGzfupGrU&usqp=CAU"
+style={{width:40,height:40}}
+/> */}
     </div>
     <div className="right">
-    
+    {/* <img src ="https://image.flaticon.com/icons/svg/54/54366.svg"
+    style={{width:40,height:40}}/> */}
     </div>
     <div className="bottom">
     
 </div>
-<div className="inner-div">
+</div>
+<div className="inner-div"
+ onClick={this.setState({
+   showlists:false
+ })
+}
+>
 </div>
 </div>
 </div>
-</div>
+
 );
 }
 }
