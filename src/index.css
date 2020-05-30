@@ -5,12 +5,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRxkCRzVapwSNBnfjZMTBk4wTqhMtQYl08gcImxcFAecqE_SHaE&usqp=CAU);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* setting up the wheel */
 .rotate-buttons
 {
   border-radius:50%;
@@ -21,21 +23,23 @@ code {
   left:20%;
   top:55%;
 }
+/* the inner circle button */
 .inner-div
 {
   border-radius:50%;
   width:30%;
   height:120px;
-  background-color:black;
+  background-color:crimson;
   box-shadow: 5px 10px 8px #888888;
   position:absolute;
   left:35%;
   top:68%;
 }
+/* the buttons that i have used the menu button the left button the right and thr bottom one */
 .menu
 {
   position:absolute;
-  left:43%;
+  left:44%;
   top:10%;
   
 }
@@ -51,10 +55,17 @@ code {
   left:80%;
   top:45%;
 }
+.bottom 
+{
+  position:absolute;
+  left:43%;
+  top:75%;
+}
+/* displaying the screen */
 .screen
 {
   width:40%;
-  height:700px;
+  height:680px;
   position:relative;
   background-color:#e6818130;
   border:2px solid crimson;
@@ -63,6 +74,7 @@ code {
   border-radius: 10%;
   margin-top: 20px;
 }
+/* the small screen */
 .show-screen
 {
   width:85%;
@@ -77,6 +89,7 @@ code {
   background-position: center;
 
 }
+/* the screen showing the mainlist and the various options */
 .main-screen
 {
   background-color:white;
@@ -92,14 +105,44 @@ code {
   margin:30px;
   color:purple;
 }
+.battery-image img
+{
+  position:absolute;
+  left:80%;
+  top:3%;
+}
+/* the menu that will be active will have a background color light blue */
 .active
 {
   background-color:lightblue;
 }
+/* albums single page design */
 .albums-single-page img
 {
   width:75%;
     height:50%;
     margin-left: 13%;
     
+}
+/* games single page design */
+.games-single-page img
+{
+  width:75%;
+  height:50%;
+  margin-left:13%;
+
+}
+/* playlists single page design */
+.playlists-single-page img
+{
+  width:50%;
+  height:50%;
+  margin-left:25%;
+}
+/* settong single page design */
+.Settings-single-page img
+{
+  width:40%;
+  height:50%;
+  margin-left:30%;
 }
